@@ -8,11 +8,12 @@ document.getElementById('search').addEventListener('click', async () => {
 
     if (!ingredients) return;
 
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=50&ranking=1&apiKey=${apiKey}`;
+    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=10&ranking=1&apiKey=${apiKey}`;
 
     try {
         const res = await fetch(url);
         let data = await res.json();
+        console.log("API response:", data);
 
         // Filter out recipes with any excluded ingredients, exclude drinks and must include at least 2 of the ingredients
         if (excludeList.length > 0) {

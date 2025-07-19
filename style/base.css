@@ -36,11 +36,12 @@ img {
 }
 
 .favorite-btn {
-    background-color: transparent;
-    color: gold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    background: none;
     border: none;
     cursor: pointer;
+    color: goldenrod;
+    margin-top: 10px;
 }
 
 .favorite-btn:hover {

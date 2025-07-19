@@ -9,18 +9,23 @@
 </head>
 
 <body>
-    <h1>🥕 Recipe Finder</h1>
-    <p>Enter your ingredients (comma-separated):</p>
-    <input type="text" id="ingredients" placeholder="e.g. eggs, cheese, spinach" />
-    <p>Exclude ingredients (optional):</p>
-    <input type="text" id="exclude" placeholder="e.g. mushrooms, tuna" />
-    <p>Cooking style (optional):</p>
-    <input type="text" id="cuisine" placeholder="e.g. Italian, Thai, BBQ" />
+    <header>
+        <a href="favorites.html">View Saved Recipes</a>
+    </header>
+    <main>
+        <h1>🥕 Recipe Finder</h1>
+        <p>Enter your ingredients (comma-separated):</p>
+        <input type="text" id="ingredients" placeholder="e.g. eggs, cheese, spinach" />
+        <p>Exclude ingredients (optional):</p>
+        <input type="text" id="exclude" placeholder="e.g. mushrooms, tuna" />
+        <p>Cooking style (optional):</p>
+        <input type="text" id="cuisine" placeholder="e.g. Italian, Thai, BBQ" />
 
-    <button id="search">Search</button>
-    <button id="refresh" disabled>Refresh</button>
+        <button id="search">Search</button>
+        <button id="refresh" disabled>Refresh</button>
 
-    <div id="recipe-container"></div>
+        <div id="recipe-container"></div>
+    </main>
 
     <script src="script/base.js" defer></script>
 </body>

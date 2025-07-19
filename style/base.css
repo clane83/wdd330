@@ -34,3 +34,15 @@ img {
     max-width: 100%;
     border-radius: 8px;
 }
+
+.favorite-btn {
+    background-color: transparent;
+    color: gold;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+}
+
+.favorite-btn:hover {
+    color: orange;
+}

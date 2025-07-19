@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Saved Recipes</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 2rem;
+        }
+
+        .recipe-card {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>❤️ Your Saved Recipes</h1>
+    <div id="favorites"></div>
+
+    <script>
+        const container = document.getElementById('favorites');
+        const favorites = JSON.parse(localStorage.getItem("favoriteRecipes")) || [];
+
+        if (favorites.length === 0) {
+            container.innerHTML = "<p>No saved recipes yet.</p>";
+        } else {
+            favorites.forEach(recipe => {
+                const div = document.createElement("div");
+                div.className = "recipe-card";
+                div.innerHTML = `
+          <h2>${recipe.title}</h2>
+          <img src="${recipe.image}" alt="${recipe.title}">
+          <a href="https://spoonacular.com/recipes/${recipe.title.replace(/ /g, "-")}-${recipe.id}" target="_blank">View Full Recipe</a>
+        `;
+                container.appendChild(div);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

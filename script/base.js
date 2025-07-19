@@ -106,12 +106,40 @@ function showRecipes(recipes) {
         const card = document.createElement('div');
         card.className = 'recipe-card';
         card.innerHTML = `
-      <h2>${recipe.title}</h2>
-      <img src="${recipe.image}" alt="${recipe.title}">
-      <p><strong>Used Ingredients:</strong> ${recipe.usedIngredientCount}</p>
-      <p><strong>Missing Ingredients:</strong> ${recipe.missedIngredientCount}</p>
-      <a href="https://spoonacular.com/recipes/${recipe.title.replace(/ /g, "-")}-${recipe.id}" target="_blank">View Full Recipe</a>
-    `;
+        <h2>${recipe.title}</h2>
+        <img src="${recipe.image}" alt="${recipe.title}">
+        <p><strong>Used Ingredients:</strong> ${recipe.usedIngredientCount}</p>
+        <p><strong>Missing Ingredients:</strong> ${recipe.missedIngredientCount}</p>
+        <a href="https://spoonacular.com/recipes/${recipe.title.replace(/ /g, "-")}-${recipe.id}" target="_blank">View Full Recipe</a><br><br>
+        <button class="favorite-btn" data-id="${recipe.id}" data-title="${recipe.title}" data-img="${recipe.image}">
+            ⭐ Save to Favorites
+        </button>
+        `;
+        const favButtons = document.querySelectorAll(".favorite-btn");
+
+        favButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const id = parseInt(btn.getAttribute("data-id"));
+                const title = btn.getAttribute("data-title");
+                const image = btn.getAttribute("data-img");
+                saveRecipe(id, title, image);
+            });
+        });
+
         container.appendChild(card);
     });
 }
+
+function saveRecipe(id, title, image) {
+    const favorites = JSON.parse(localStorage.getItem("favoriteRecipes")) || [];
+
+    if (!favorites.find(r => r.id === id)) {
+        favorites.push({ id, title, image });
+        localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
+        alert(`⭐ "${title}" has been added to your favorites!`);
+    } else {
+        alert(`"${title}" is already in your favorites.`);
+    }
+}
+
+
